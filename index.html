@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muhammad Abdul Rehman | Data Analyst</title>
+<meta name="description" content="Data analyst building the reconciliation, costing and reporting systems that operating decisions run on. Two years across trading and manufacturing operations.">
+<meta name="author" content="Muhammad Abdul Rehman">
+<meta property="og:title" content="Muhammad Abdul Rehman | Data Analyst">
+<meta property="og:description" content="I build the reconciliation, costing and reporting systems that operating decisions run on.">
+<meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --paper:#FAFAF8;
+  --paper-2:#F3F2ED;
+  --card:#FFFFFF;
+  --ink:#0F172A;
+  --ink-soft:#334155;
+  --slate:#64748B;
+  --blue:#1E40AF;
+  --wash:#ECF0FA;
+  --flag:#B45309;
+  --rule:#E4E3DE;
+  --rule-2:#D3D2CB;
+  --r:8px;
+  --shell:1180px;
+  --gut:28px;
+  --ease:cubic-bezier(.2,.7,.3,1);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:96px}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Libre Franklin',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:16px;
+  line-height:1.7;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+::selection{background:var(--ink);color:var(--paper)}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
+
+.shell{max-width:var(--shell);margin:0 auto;padding:0 var(--gut)}
+
+/* figures: tabular, aligned, functional only */
+.fig{
+  font-family:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+  font-variant-numeric:tabular-nums;
+  font-feature-settings:'tnum' 1;
+  letter-spacing:-0.02em;
+}
+
+/* ============================================================
+   TYPE SCALE
+   ============================================================ */
+.display{
+  font-size:clamp(2.55rem,5.4vw,4.3rem);
+  font-weight:800;
+  line-height:1.02;
+  letter-spacing:-.035em;
+  text-wrap:balance;
+}
+h2{
+  font-size:clamp(1.65rem,3.1vw,2.15rem);
+  font-weight:700;
+  line-height:1.14;
+  letter-spacing:-.026em;
+}
+h3{font-size:1.1rem;font-weight:650;line-height:1.35;letter-spacing:-.012em}
+p{max-width:64ch}
+.lede{font-size:1.08rem;line-height:1.72;color:var(--ink-soft)}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:80;
+  height:72px;display:flex;align-items:center;
+  background:transparent;
+  border-bottom:1px solid transparent;
+  transition:background .35s var(--ease),border-color .35s var(--ease),height .35s var(--ease);
+}
+.nav.stuck{
+  height:62px;
+  background:rgba(250,250,248,.86);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  backdrop-filter:saturate(180%) blur(14px);
+  border-bottom-color:var(--rule);
+}
+.nav .shell{display:flex;align-items:center;justify-content:space-between;width:100%}
+.mark{
+  display:flex;align-items:baseline;gap:9px;
+  font-weight:700;letter-spacing:-.02em;font-size:.98rem;
+}
+.mark .dot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex:none;transform:translateY(-1px)}
+.navlinks{display:flex;align-items:center;gap:32px}
+.navlinks a{
+  font-size:.9rem;font-weight:500;color:var(--slate);
+  position:relative;padding:4px 0;
+  transition:color .25s var(--ease);
+}
+.navlinks a::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;
+  background:var(--ink);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s var(--ease);
+}
+.navlinks a:hover{color:var(--ink)}
+.navlinks a:hover::after,.navlinks a.active::after{transform:scaleX(1)}
+.navlinks a.active{color:var(--ink)}
+.nav-mail{
+  border:1px solid var(--rule-2);border-radius:var(--r);
+  padding:8px 16px;font-size:.875rem;font-weight:600;color:var(--ink);
+  transition:background .25s var(--ease),border-color .25s var(--ease),color .25s var(--ease);
+}
+.nav-mail:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.burger{display:none;width:40px;height:40px;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.burger i{display:block;width:19px;height:1.6px;background:var(--ink);border-radius:2px;transition:transform .3s var(--ease),opacity .2s}
+.burger.open i:nth-child(1){transform:translateY(6.6px) rotate(45deg)}
+.burger.open i:nth-child(2){opacity:0}
+.burger.open i:nth-child(3){transform:translateY(-6.6px) rotate(-45deg)}
+.sheet{
+  position:fixed;top:62px;left:0;right:0;z-index:79;
+  background:var(--paper);border-bottom:1px solid var(--rule);
+  padding:8px var(--gut) 22px;
+  display:none;flex-direction:column;
+}
+.sheet.on{display:flex}
+.sheet a{padding:13px 0;border-bottom:1px solid var(--rule);font-weight:500}
+.sheet a:last-child{border-bottom:none}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{padding:152px 0 44px}
+.hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,424px);
+  gap:64px;align-items:center;
+}
+.hero-name{
+  font-size:.95rem;font-weight:600;letter-spacing:.005em;
+  color:var(--slate);margin-bottom:18px;
+}
+.hero h1{margin-bottom:26px}
+.hero p{margin-bottom:34px;max-width:56ch}
+.actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:13px 24px;border-radius:var(--r);
+  font-size:.94rem;font-weight:600;letter-spacing:-.005em;
+  transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease),transform .25s var(--ease);
+}
+.btn-solid{background:var(--ink);color:var(--paper);border:1px solid var(--ink)}
+.btn-solid:hover{background:var(--blue);border-color:var(--blue)}
+.btn-line{border:1px solid var(--rule-2);color:var(--ink)}
+.btn-line:hover{border-color:var(--ink);background:var(--card)}
+.btn:active{transform:translateY(1px)}
+
+.status{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:.855rem;font-weight:500;color:var(--slate);
+  margin-top:30px;
+}
+.status .pip{
+  width:7px;height:7px;border-radius:50%;background:var(--blue);flex:none;
+  box-shadow:0 0 0 0 rgba(30,64,175,.42);
+  animation:pip 2.6s var(--ease) infinite;
+}
+@keyframes pip{
+  0%{box-shadow:0 0 0 0 rgba(30,64,175,.42)}
+  70%{box-shadow:0 0 0 7px rgba(30,64,175,0)}
+  100%{box-shadow:0 0 0 0 rgba(30,64,175,0)}
+}
+
+/* ---- the numbers panel ---- */
+.metrics{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:14px;
+  box-shadow:0 1px 2px rgba(15,23,42,.04),0 18px 44px -26px rgba(15,23,42,.28);
+  display:grid;grid-template-columns:repeat(2,1fr);
+  overflow:hidden;
+}
+.metric{
+  padding:30px 26px 28px;
+  border-right:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  position:relative;
+}
+.metric:nth-child(2n){border-right:none}
+.metric:nth-last-child(-n+2){border-bottom:none}
+.metric .n{
+  display:block;
+  font-variant-numeric:tabular-nums;
+  font-size:2.5rem;font-weight:650;line-height:1;
+  letter-spacing:-.042em;color:var(--ink);
+}
+.metric .n small{font-size:.58em;font-weight:600;letter-spacing:-.02em;margin-left:1px}
+.metric .k{
+  display:block;font-size:.845rem;color:var(--slate);
+  margin-top:11px;line-height:1.5;
+}
+.metric.lead .n{color:var(--blue)}
+.metrics-note{
+  font-size:.79rem;color:var(--slate);line-height:1.55;
+  margin-top:14px;padding-left:2px;
+}
+
+/* ============================================================
+   BANDS + CLAIM/EVIDENCE SPLIT
+   ============================================================ */
+.band{padding:104px 0}
+.band-line{border-top:1px solid var(--rule)}
+.band-tint{background:var(--paper-2)}
+
+.split{display:grid;grid-template-columns:minmax(0,268px) minmax(0,1fr);gap:76px}
+.aside{position:sticky;top:110px;align-self:start}
+.aside h2{margin-bottom:16px}
+.aside p{font-size:.94rem;color:var(--slate);max-width:30ch}
+
+/* the reveal device: a rule drawn across, no translate */
+.rule-in{position:relative}
+.rule-in::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:var(--rule-2);transform:scaleX(0);transform-origin:left;
+  transition:transform .85s var(--ease);
+}
+.rule-in.seen::before{transform:scaleX(1)}
+.js .fade-in{opacity:0;transition:opacity .7s var(--ease) .12s}
+.fade-in.seen{opacity:1}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about{display:grid;grid-template-columns:minmax(0,268px) minmax(0,1fr);gap:76px;align-items:start}
+.portrait{
+  border-radius:10px;overflow:hidden;border:1px solid var(--rule);
+  background:var(--paper-2);
+}
+.portrait img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 22%}
+.about-body h2{margin-bottom:22px;max-width:19ch}
+.about-body p+p{margin-top:17px}
+.facts{
+  margin-top:34px;border-top:1px solid var(--rule);
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+}
+.fact{padding:17px 0;border-bottom:1px solid var(--rule)}
+.fact:nth-child(odd){padding-right:26px}
+.fact dt{font-size:.8rem;color:var(--slate);margin-bottom:3px}
+.fact dd{font-size:.94rem;font-weight:500}
+
+/* ============================================================
+   CAPABILITIES
+   ============================================================ */
+.caps{display:flex;flex-direction:column}
+.cap{padding:30px 0 32px;border-top:1px solid var(--rule)}
+.cap:first-child{border-top:none;padding-top:0}
+.cap h3{margin-bottom:5px}
+.cap>p{font-size:.94rem;color:var(--slate);margin-bottom:17px;max-width:62ch}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tag{
+  font-size:.815rem;font-weight:500;color:var(--ink-soft);
+  border:1px solid var(--rule-2);border-radius:100px;
+  padding:5px 13px;background:var(--card);
+  transition:border-color .22s var(--ease),color .22s var(--ease);
+}
+.tag:hover{border-color:var(--ink);color:var(--ink)}
+.tag.key{background:var(--wash);border-color:#C5D2EE;color:var(--blue)}
+
+/* ============================================================
+   EXPERIENCE
+   ============================================================ */
+.roles{display:flex;flex-direction:column}
+.role{
+  display:grid;grid-template-columns:96px minmax(0,1fr);gap:34px;
+  padding:34px 0 38px;border-top:1px solid var(--rule);
+}
+.role:first-child{border-top:none;padding-top:0}
+.role-when{padding-top:3px}
+.role-when .y{display:block;font-size:.9rem;font-weight:500;color:var(--ink)}
+.role-when .y+.y{color:var(--slate);margin-top:1px}
+.role-when .kind{display:block;font-size:.79rem;color:var(--slate);margin-top:9px}
+.role-head{margin-bottom:15px}
+.role-head h3{font-size:1.16rem;font-weight:700;letter-spacing:-.018em}
+.role-head .org{font-size:.95rem;font-weight:500;color:var(--blue);margin-top:2px}
+.role ul{display:flex;flex-direction:column;gap:11px}
+.role li{
+  position:relative;padding-left:19px;
+  font-size:.955rem;line-height:1.65;color:var(--ink-soft);max-width:66ch;
+}
+.role li::before{
+  content:"";position:absolute;left:0;top:.66em;
+  width:7px;height:1.5px;background:var(--rule-2);
+}
+.role li b{font-weight:650;color:var(--ink)}
+
+/* ============================================================
+   SELECTED WORK  (records, not a card grid)
+   ============================================================ */
+.works{display:flex;flex-direction:column}
+.work{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,244px);
+  gap:56px;align-items:start;
+  padding:36px 0 40px;border-top:1px solid var(--rule);
+}
+.work:first-child{border-top:none;padding-top:0}
+.work-h{
+  display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:11px;
+}
+.work-h h3{font-size:1.22rem;font-weight:700;letter-spacing:-.02em}
+.work-where{font-size:.86rem;color:var(--slate)}
+.work p{font-size:.965rem;line-height:1.7;color:var(--ink-soft);max-width:62ch}
+.work-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.work-tags span{font-size:.78rem;color:var(--slate);border:1px solid var(--rule);border-radius:100px;padding:3px 11px}
+.outcome{
+  background:var(--card);border:1px solid var(--rule);border-left:2px solid var(--blue);
+  border-radius:10px;padding:18px 20px;
+  box-shadow:0 6px 20px -16px rgba(15,23,42,.35);
+}
+.outcome .v{display:block;font-variant-numeric:tabular-nums;font-size:1.42rem;font-weight:600;line-height:1.15;letter-spacing:-.03em;color:var(--ink)}
+.outcome .d{display:block;font-size:.845rem;color:var(--slate);margin-top:7px;line-height:1.55}
+.outcome.award{border-left-color:var(--flag)}
+
+/* ============================================================
+   EDUCATION + CREDENTIALS
+   ============================================================ */
+.edu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px}
+.qual{padding-bottom:24px;border-bottom:1px solid var(--rule);margin-bottom:24px}
+.qual:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.qual h3{font-size:1.08rem;font-weight:650}
+.qual .inst{font-size:.92rem;color:var(--blue);font-weight:500;margin-top:2px}
+.qual .yr{font-size:.845rem;color:var(--slate);margin-top:2px}
+.qual p{font-size:.925rem;color:var(--ink-soft);margin-top:11px}
+.grades{display:flex;gap:8px;margin-top:13px;flex-wrap:wrap}
+.grade{
+  border:1px solid var(--rule-2);border-radius:var(--r);
+  padding:7px 12px;background:var(--card);text-align:center;min-width:64px;
+}
+.grade b{display:block;font-size:1.02rem;font-weight:600;line-height:1.2}
+.grade i{display:block;font-style:normal;font-size:.755rem;color:var(--slate);margin-top:2px}
+.certs{display:grid;gap:8px;margin-top:16px}
+.cert{
+  background:var(--card);border:1px solid var(--rule);
+  border-radius:10px;padding:13px 16px;
+  transition:border-color .24s var(--ease),box-shadow .24s var(--ease);
+}
+.cert:hover{border-color:var(--rule-2);box-shadow:0 6px 18px -12px rgba(15,23,42,.3)}
+.cert .t{display:block;font-size:.9rem;font-weight:600;line-height:1.4;letter-spacing:-.01em}
+.cert .b{display:block;font-size:.8rem;color:var(--slate);margin-top:3px}
+
+/* ============================================================
+   CONTACT  (inverted closing chord)
+   ============================================================ */
+.contact{background:var(--ink);color:var(--paper);padding:104px 0 96px}
+.contact h2{max-width:17ch;margin-bottom:20px;font-size:clamp(1.9rem,4vw,2.7rem)}
+.contact .lede{color:#B9C2D4;max-width:52ch}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,376px);gap:76px;align-items:start}
+.mailto{
+  display:inline-block;margin-top:34px;
+  font-size:clamp(1.05rem,2.3vw,1.5rem);font-weight:600;letter-spacing:-.022em;
+  color:var(--paper);border-bottom:1.5px solid rgba(250,250,248,.32);
+  padding-bottom:4px;transition:border-color .3s var(--ease),color .3s var(--ease);
+  word-break:break-word;
+}
+.mailto:hover{border-bottom-color:var(--paper)}
+.reach{border-top:1px solid rgba(250,250,248,.16)}
+.reach a,.reach div{
+  display:flex;align-items:baseline;justify-content:space-between;gap:20px;
+  padding:16px 0;border-bottom:1px solid rgba(250,250,248,.16);
+}
+.reach .k{font-size:.85rem;color:#8E9AB2;flex:none}
+.reach .v{font-size:.945rem;font-weight:500;text-align:right;color:var(--paper);transition:color .25s var(--ease)}
+.reach a:hover .v{color:#93AEEE}
+.avail{display:flex;align-items:center;gap:9px;margin-top:22px;font-size:.875rem;color:#B9C2D4}
+.avail .pip{width:7px;height:7px;border-radius:50%;background:#7BA0F5;flex:none}
+
+.foot{background:var(--ink);color:#7C8AA3;padding:0 0 34px;font-size:.83rem}
+.foot .shell{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  border-top:1px solid rgba(250,250,248,.13);padding-top:26px}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .metrics{max-width:520px}
+  .split,.about,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .aside{position:static}
+  .aside p{max-width:56ch}
+  .portrait{max-width:270px}
+  .work{grid-template-columns:1fr;gap:22px}
+  .outcome{max-width:340px}
+  .edu{grid-template-columns:1fr;gap:48px}
+}
+@media (max-width:760px){
+  :root{--gut:22px}
+  .navlinks,.nav-mail{display:none}
+  .burger{display:flex}
+  .nav{height:62px}
+  .hero{padding:118px 0 0}
+  .band{padding:76px 0}
+  .contact{padding:80px 0 72px}
+  .metric{padding:21px 19px 19px}
+  .metric .n{font-size:1.85rem}
+  .role{grid-template-columns:1fr;gap:13px}
+  .role-when{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;padding-top:0}
+  .role-when .kind{margin-top:0}
+  .facts{grid-template-columns:1fr}
+  .fact:nth-child(odd){padding-right:0}
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+  .rule-in::before{transform:scaleX(1)}
+  .js .fade-in{opacity:1}
+}
+.cap:first-child::before,.role:first-child::before,.work:first-child::before{display:none}
+</style>
+</head>
+<body>
+<script>document.documentElement.className+=" js";</script>
+
+<header class="nav" id="nav">
+  <div class="shell">
+    <a class="mark" href="#top"><span class="dot"></span>M Abdul Rehman</a>
+    <nav class="navlinks" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Work</a>
+      <a href="#education">Education</a>
+    </nav>
+    <a class="nav-mail" href="#contact">Get in touch</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="sheet">
+      <i></i><i></i><i></i>
+    </button>
+  </div>
+</header>
+
+<div class="sheet" id="sheet">
+  <a href="#about">About</a>
+  <a href="#capabilities">Capabilities</a>
+  <a href="#experience">Experience</a>
+  <a href="#work">Work</a>
+  <a href="#education">Education</a>
+  <a href="#contact">Get in touch</a>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="shell">
+    <div class="hero-grid">
+
+      <div>
+        <p class="hero-name">Muhammad Abdul Rehman</p>
+        <h1 class="display">Data analyst who makes the numbers agree.</h1>
+        <p class="lede">Two years turning operational data into decisions across trading and
+        manufacturing: reconciliation and reporting systems, landed cost and pricing models,
+        inventory and demand analysis. I use AI to write and stress-test SQL and Python, and
+        I validate every output against source data before it reaches a decision.</p>
+        <div class="actions">
+          <a class="btn btn-solid" href="#contact">Get in touch</a>
+          <a class="btn btn-line" href="https://www.linkedin.com/in/mar-data-analyst" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <p class="status"><span class="pip"></span>Open to remote and hybrid roles internationally</p>
+      </div>
+
+      <div>
+        <div class="metrics" id="metrics">
+          <div class="metric lead">
+            <span class="n"><span data-count="60">60</span>+</span>
+            <span class="k">SKUs researched and priced against landed cost</span>
+          </div>
+          <div class="metric lead">
+            <span class="n">~<span data-count="20">20</span> <small>hrs</small></span>
+            <span class="k">of manual work returned to the business each month</span>
+          </div>
+          <div class="metric">
+            <span class="n"><span data-count="2">2</span> <small>yrs</small></span>
+            <span class="k">in analytics roles across trading and manufacturing</span>
+          </div>
+          <div class="metric">
+            <span class="n"><span data-count="1">1</span>st <small>of 18</small></span>
+            <span class="k">at the YPDC National Summit on AI and Climate Change</span>
+          </div>
+        </div>
+        <p class="metrics-note">Figures from live roles at Vision Wise Electronics and HAQ Leathers.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="band" id="about">
+  <div class="shell">
+    <div class="about fade-in reveal">
+      <div class="portrait">
+        <img src="profile.jpg" alt="Muhammad Abdul Rehman" width="540" height="675" loading="lazy">
+      </div>
+      <div class="about-body">
+        <h2>My work sits close to the operation, not above it.</h2>
+        <p class="lede">I am a data analyst based in Faisalabad, Pakistan, working remotely with
+        trading and manufacturing businesses. The data I handle is the operational kind: purchase
+        invoices, stock records, sales listings, production runs, freight and duty. The job is to
+        make those sources agree with each other, then turn them into reporting that pricing,
+        purchasing and production decisions can actually run on.</p>
+        <p>AI is part of how I work rather than a separate skill on the list. I use Claude, GPT and
+        Gemini to draft and stress-test SQL and Python, to design reconciliation workflows that
+        replace manual cross-checking, and to build the internal tools that generate the reporting.
+        Nothing goes out on trust: every output is validated against source data before anyone acts
+        on it.</p>
+        <p>Alongside the analytics I build AI-powered SaaS products and automation systems for
+        clients, from scoping and architecture through to deployment. Building the systems that
+        produce data keeps me sharper at analysing it.</p>
+
+        <dl class="facts">
+          <div class="fact"><dt>Based in</dt><dd>Faisalabad, Pakistan</dd></div>
+          <div class="fact"><dt>Working style</dt><dd>Remote and hybrid, international</dd></div>
+          <div class="fact"><dt>Currently</dt><dd>Pearson HND in Computing, semester 4</dd></div>
+          <div class="fact"><dt>Languages</dt><dd>English professional, Urdu and Punjabi native</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAPABILITIES ============ -->
+<section class="band band-tint" id="capabilities">
+  <div class="shell">
+    <div class="split">
+      <div class="aside">
+        <h2>What I get hired to do</h2>
+        <p>The tools underneath change from one operation to the next. The requirement that every
+        number traces back to a source does not.</p>
+      </div>
+      <div class="caps">
+
+        <div class="cap rule-in fade-in reveal">
+          <h3>Reconciliation and data integrity</h3>
+          <p>Making purchase invoices, stock records and sales listings agree at serial level, then
+          building the process that keeps them agreeing.</p>
+          <div class="tags">
+            <span class="tag key">SQL</span>
+            <span class="tag key">Python</span>
+            <span class="tag key">Excel, advanced</span>
+            <span class="tag">Google Sheets</span>
+            <span class="tag">Data cleaning</span>
+            <span class="tag">Data validation</span>
+            <span class="tag">Variance analysis</span>
+          </div>
+        </div>
+
+        <div class="cap rule-in fade-in reveal">
+          <h3>Reporting systems and dashboards</h3>
+          <p>Automated reporting that replaces manual compilation, so the numbers are current at the
+          moment somebody needs them rather than a week behind.</p>
+          <div class="tags">
+            <span class="tag key">Dashboard development</span>
+            <span class="tag">Automated reporting</span>
+            <span class="tag">KPI tracking</span>
+            <span class="tag">Trend analysis</span>
+            <span class="tag">Single source of truth</span>
+          </div>
+        </div>
+
+        <div class="cap rule-in fade-in reveal">
+          <h3>Commercial and inventory analysis</h3>
+          <p>Landed cost built up from materials, production, freight and duties, with pricing set
+          from that output. Inventory read against real demand rather than against last quarter.</p>
+          <div class="tags">
+            <span class="tag key">Landed cost modelling</span>
+            <span class="tag key">Pricing strategy</span>
+            <span class="tag">Margin analysis</span>
+            <span class="tag">Inventory analysis</span>
+            <span class="tag">Demand analysis</span>
+          </div>
+        </div>
+
+        <div class="cap rule-in fade-in reveal">
+          <h3>AI-assisted analytics and automation</h3>
+          <p>Using LLMs to write and stress-test queries, design reconciliation workflows and build
+          internal tools, with every result checked back against source data.</p>
+          <div class="tags">
+            <span class="tag key">Prompt engineering</span>
+            <span class="tag key">Claude Code</span>
+            <span class="tag">LLM workflow design</span>
+            <span class="tag">GPT</span>
+            <span class="tag">Gemini</span>
+            <span class="tag">AI-assisted SQL</span>
+            <span class="tag">Process automation</span>
+          </div>
+        </div>
+
+        <div class="cap rule-in fade-in reveal">
+          <h3>AI SaaS and product development</h3>
+          <p>AI-powered SaaS products and automation systems for clients, from scoping and
+          architecture through to deployment, including the storefronts they run on.</p>
+          <div class="tags">
+            <span class="tag key">SaaS architecture</span>
+            <span class="tag">Python automation</span>
+            <span class="tag">Infrastructure cost modelling</span>
+            <span class="tag">WordPress</span>
+            <span class="tag">WooCommerce</span>
+            <span class="tag">Brand and packaging design</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="band band-line" id="experience">
+  <div class="shell">
+    <div class="split">
+      <div class="aside">
+        <h2>Experience</h2>
+        <p>Analytics roles since 2024, running alongside independent product and design work that
+        started in 2020.</p>
+      </div>
+      <div class="roles">
+
+        <article class="role rule-in fade-in reveal">
+          <div class="role-when">
+            <span class="y fig">Jul 2026</span>
+            <span class="y fig">Present</span>
+            <span class="kind">Contract, remote</span>
+          </div>
+          <div>
+            <div class="role-head">
+              <h3>Data Analyst</h3>
+              <p class="org">Vision Wise Electronics LLC</p>
+            </div>
+            <ul>
+              <li>Own sales and inventory reporting end to end for a multi-vendor consumer
+              electronics trading operation, analysing quarterly data <b>at serial level</b> and
+              reconciling purchase invoices, stock records and sales listings so pricing and
+              purchasing decisions run on validated figures.</li>
+              <li>Rebuilt a manual inventory process into a live, continuously updated
+              <b>single source of truth</b>, ending the recurring stock mismatches caused by records
+              drifting out of sync between teams.</li>
+              <li>Implemented AI-driven reconciliation workflows that removed manual cross-checking
+              and returned <b>roughly 20 hours of manual work to the business each month</b>.</li>
+              <li>Build internal automation tools for invoice processing, serialised data extraction
+              and stock reporting, using AI-assisted development to write and stress-test SQL and
+              Python.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="role rule-in fade-in reveal">
+          <div class="role-when">
+            <span class="y fig">Aug 2024</span>
+            <span class="y fig">Jul 2026</span>
+            <span class="kind">Full-time, remote</span>
+          </div>
+          <div>
+            <div class="role-head">
+              <h3>Data Analyst</h3>
+              <p class="org">HAQ Leathers</p>
+            </div>
+            <ul>
+              <li>Owned <b>data management end to end</b> for a leather goods manufacturer,
+              analysing sales, inventory, production and cost data and producing the reporting that
+              pricing and production decisions were made from.</li>
+              <li>Built <b>landed cost models</b> covering materials, production, freight and duties,
+              then set pricing strategy from that output to protect margin while keeping products
+              competitively positioned.</li>
+              <li>Ran pricing research across a range of <b>more than 60 SKUs</b>, testing each one
+              against its landed cost and its competitive position to find where price could move
+              without losing the sale.</li>
+              <li>Tracked production and inventory against sales demand, flagging stock building
+              against slow-moving lines and identifying where production needed to lead demand
+              rather than react to it.</li>
+              <li>Replaced fragmented manual records with consolidated reporting on what was
+              selling, what it cost and what it earned, feeding that analysis into product planning
+              and marketing decisions.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="role rule-in fade-in reveal">
+          <div class="role-when">
+            <span class="y fig">Jan 2023</span>
+            <span class="y fig">Present</span>
+            <span class="kind">Freelance</span>
+          </div>
+          <div>
+            <div class="role-head">
+              <h3>AI SaaS Developer and Automation Specialist</h3>
+              <p class="org">Independent</p>
+            </div>
+            <ul>
+              <li>Build AI-powered SaaS products and automation systems for clients from scoping and
+              architecture through to deployment, mapping manual business workflows and designing
+              the systems that replace them.</li>
+              <li>Currently delivering a delivery proof management system with tiered pricing and
+              infrastructure cost modelling, and an e-commerce platform with an integrated AI
+              assistant and order tracking. Also develop prompt engineering frameworks and Python
+              automation scripts for report generation and data extraction.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="role rule-in fade-in reveal">
+          <div class="role-when">
+            <span class="y fig">Jun 2020</span>
+            <span class="y fig">Present</span>
+            <span class="kind">Freelance, remote</span>
+          </div>
+          <div>
+            <div class="role-head">
+              <h3>Graphic Designer and Brand Specialist</h3>
+              <p class="org">Independent</p>
+            </div>
+            <ul>
+              <li>Deliver brand identity, packaging and ad creative for e-commerce and retail
+              clients, and build the WordPress and WooCommerce storefronts they run on.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SELECTED WORK ============ -->
+<section class="band band-tint" id="work">
+  <div class="shell">
+    <div class="split">
+      <div class="aside">
+        <h2>Selected work</h2>
+        <p>Six pieces of work from the last two years. Each one names the problem, what I changed,
+        and what it produced.</p>
+      </div>
+      <div class="works">
+
+        <article class="work rule-in fade-in reveal">
+          <div>
+            <div class="work-h">
+              <h3>A single source of truth for stock</h3>
+              <span class="work-where">Vision Wise Electronics</span>
+            </div>
+            <p>A manual inventory process was letting stock records drift out of sync between teams,
+            which produced mismatches that came back every cycle. I rebuilt it as a live,
+            continuously updated system that every team reads from and writes to, so the stock
+            position is the same figure wherever it is checked.</p>
+            <div class="work-tags">
+              <span>Inventory analysis</span><span>Reconciliation</span><span>SQL</span><span>Process design</span>
+            </div>
+          </div>
+          <div class="outcome">
+            <span class="v">0 recurring mismatches</span>
+            <span class="d">Once every team read from one live record instead of its own copy</span>
+          </div>
+        </article>
+
+        <article class="work rule-in fade-in reveal">
+          <div>
+            <div class="work-h">
+              <h3>AI-driven reconciliation workflow</h3>
+              <span class="work-where">Vision Wise Electronics</span>
+            </div>
+            <p>Cross-checking purchase invoices against stock records and sales listings was done by
+            hand, every day. I designed reconciliation workflows that do the matching and surface
+            only the exceptions, so review time goes on the differences rather than the whole file.</p>
+            <div class="work-tags">
+              <span>AI workflow design</span><span>Prompt engineering</span><span>Python</span><span>Exception reporting</span>
+            </div>
+          </div>
+          <div class="outcome">
+            <span class="v">~20 hrs per month</span>
+            <span class="d">Of manual cross-checking returned to the business</span>
+          </div>
+        </article>
+
+        <article class="work rule-in fade-in reveal">
+          <div>
+            <div class="work-h">
+              <h3>Landed cost and pricing model</h3>
+              <span class="work-where">HAQ Leathers</span>
+            </div>
+            <p>Pricing was being set without a full view of what a product cost to land. I built a
+            cost model covering materials, production, freight and duties, then priced a range of
+            more than 60 SKUs from its output, researching each one against its competitive position
+            to protect margin without losing the sale.</p>
+            <div class="work-tags">
+              <span>Landed cost modelling</span><span>Pricing strategy</span><span>Pricing research</span><span>Margin analysis</span><span>Excel</span>
+            </div>
+          </div>
+          <div class="outcome">
+            <span class="v">60+ SKUs priced</span>
+            <span class="d">Each one traced back to a landed figure built from materials, production, freight and duties</span>
+          </div>
+        </article>
+
+        <article class="work rule-in fade-in reveal">
+          <div>
+            <div class="work-h">
+              <h3>Serial-level sales and inventory reporting</h3>
+              <span class="work-where">Vision Wise Electronics</span>
+            </div>
+            <p>Quarterly sales and stock analysed down to individual serial numbers across a
+            multi-vendor consumer electronics operation, with the three record sets reconciled first
+            so that pricing and purchasing decisions are made on validated figures.</p>
+            <div class="work-tags">
+              <span>Serial-level analysis</span><span>Quarterly reporting</span><span>Multi-vendor</span><span>Data validation</span>
+            </div>
+          </div>
+          <div class="outcome">
+            <span class="v">The unit, not the line</span>
+            <span class="d">Serial number as the reporting grain across every vendor</span>
+          </div>
+        </article>
+
+        <article class="work rule-in fade-in reveal">
+          <div>
+            <div class="work-h">
+              <h3>Production read against demand</h3>
+              <span class="work-where">HAQ Leathers</span>
+            </div>
+            <p>I took over data management for the operation and replaced fragmented manual records
+            with consolidated reporting on what was selling, what it cost and what it earned.
+            Tracking production and inventory against sales demand flagged stock building on
+            slow-moving lines and showed where production needed to lead demand rather than react
+            to it.</p>
+            <div class="work-tags">
+              <span>Data management</span><span>Demand analysis</span><span>Production planning</span><span>Inventory analysis</span><span>Reporting</span>
+            </div>
+          </div>
+          <div class="outcome">
+            <span class="v">Slow lines flagged early</span>
+            <span class="d">Before stock built up against them and tied up working capital</span>
+          </div>
+        </article>
+
+        <article class="work rule-in fade-in reveal">
+          <div>
+            <div class="work-h">
+              <h3>Flood prediction and early warning model</h3>
+              <span class="work-where">YPDC National Summit</span>
+            </div>
+            <p>An AI-powered flood prediction and early-warning model addressing climate risk in
+            Pakistan, built and presented to a national panel. It was judged first against seventeen
+            other teams.</p>
+            <div class="work-tags">
+              <span>Machine learning</span><span>Climate risk</span><span>Early warning</span><span>Public policy</span>
+            </div>
+          </div>
+          <div class="outcome award">
+            <span class="v">1st of 18</span>
+            <span class="d">YPDC National Summit on AI and Climate Change, May 2026</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section class="band band-line" id="education">
+  <div class="shell">
+    <div class="split">
+      <div class="aside">
+        <h2>Education and credentials</h2>
+        <p>A computing diploma taken while working, and the award that came out of it.</p>
+      </div>
+      <div class="edu">
+
+        <div>
+          <div class="qual fade-in reveal">
+            <h3>Pearson BTEC Higher National Diploma in Computing</h3>
+            <p class="inst">The University of Faisalabad</p>
+            <p class="yr">2025 to 2026</p>
+            <p>Units include AI Fundamentals, Machine Learning, Cybersecurity and Business Process
+            Support.</p>
+            <div class="grades">
+              <span class="grade"><b>9</b><i>Distinctions</i></span>
+              <span class="grade"><b>2</b><i>Merits</i></span>
+              <span class="grade"><b>3</b><i>Semesters done</i></span>
+            </div>
+          </div>
+          <div class="qual fade-in reveal">
+            <h3>CAIE A Levels</h3>
+            <p class="inst">Beaconhouse College Programme</p>
+            <p class="yr">2022 to 2024</p>
+            <div class="grades">
+              <span class="grade"><b>A</b><i>Physics</i></span>
+              <span class="grade"><b>B</b><i>Biology</i></span>
+              <span class="grade"><b>B</b><i>Chemistry</i></span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="qual fade-in reveal">
+            <h3>1st Place, YPDC National Summit on AI and Climate Change</h3>
+            <p class="inst">The University of Faisalabad</p>
+            <p class="yr">May 2026</p>
+            <p>Competed against 17 teams and presented an AI-powered flood prediction and
+            early-warning model to a national panel.</p>
+          </div>
+          <div class="qual fade-in reveal">
+            <h3>Certifications</h3>
+            <div class="certs">
+              <div class="cert">
+                <span class="t">AI for Managers</span>
+                <span class="b">Microsoft and LinkedIn, 2026</span>
+              </div>
+              <div class="cert">
+                <span class="t">Amplify Your Critical Thinking with Generative AI</span>
+                <span class="b">LinkedIn Learning, 2026</span>
+              </div>
+              <div class="cert">
+                <span class="t">Responsible AI for Managers</span>
+                <span class="b">LinkedIn Learning</span>
+              </div>
+              <div class="cert">
+                <span class="t">Become an AI-Powered People Manager</span>
+                <span class="b">LinkedIn Learning</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="shell">
+    <div class="contact-grid">
+      <div>
+        <h2>Open to analyst roles, remote or hybrid.</h2>
+        <p class="lede">If you have operational data that is not agreeing with itself, or reporting
+        that somebody still assembles by hand every week, that is the work I do. Email reaches me
+        fastest.</p>
+        <a class="mailto" href="mailto:abdulrehman19jan@gmail.com">abdulrehman19jan@gmail.com</a>
+      </div>
+      <div>
+        <div class="reach">
+          <a href="mailto:abdulrehman19jan@gmail.com">
+            <span class="k">Email</span><span class="v">abdulrehman19jan@gmail.com</span>
+          </a>
+          <a href="tel:+923157565400">
+            <span class="k">Phone</span><span class="v">+92 315 7565400</span>
+          </a>
+          <a href="https://www.linkedin.com/in/mar-data-analyst" target="_blank" rel="noopener">
+            <span class="k">LinkedIn</span><span class="v">mar-data-analyst</span>
+          </a>
+          <div>
+            <span class="k">Location</span><span class="v">Faisalabad, Pakistan</span>
+          </div>
+        </div>
+        <p class="avail"><span class="pip"></span>Available for new work</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="shell">
+    <span>Muhammad Abdul Rehman, 2026</span>
+    <span>Data analyst, Faisalabad, Pakistan</span>
+  </div>
+</footer>
+
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fmt = function (n) { return n.toLocaleString("en-US"); };
+  var easeOut = function (t) { return 1 - Math.pow(1 - t, 3); };
+
+  /* Animate an integer in place.
+     The frame loop only draws the in-between values. A timer writes the final
+     one, because requestAnimationFrame never fires in a background tab and this
+     panel must not end up claiming the figures agree while showing that they
+     do not. Any tween already on the element is cancelled first, so overlapping
+     calls cannot fight over the value. */
+  function tween(el, from, to, dur) {
+    if (el._raf) { cancelAnimationFrame(el._raf); el._raf = 0; }
+    if (el._end) { clearTimeout(el._end); el._end = 0; }
+
+    function settle() {
+      if (el._raf) { cancelAnimationFrame(el._raf); el._raf = 0; }
+      el._end = 0;
+      el.textContent = fmt(to);
+    }
+    if (reduced) { settle(); return; }
+
+    var t0 = null;
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      var p = (ts - t0) / dur;
+      if (p >= 1) { settle(); return; }
+      el.textContent = fmt(Math.round(from + (to - from) * easeOut(p)));
+      el._raf = requestAnimationFrame(step);
+    }
+    el.textContent = fmt(from);
+    el._raf = requestAnimationFrame(step);
+    el._end = setTimeout(settle, dur + 80);
+  }
+
+  /* ---------- nav state ---------- */
+  var nav = document.getElementById("nav");
+  var burger = document.getElementById("burger");
+  var sheet = document.getElementById("sheet");
+  var links = Array.prototype.slice.call(document.querySelectorAll(".navlinks a"));
+  var sections = links
+    .map(function (a) { return document.querySelector(a.getAttribute("href")); })
+    .filter(Boolean);
+
+  function onScroll() {
+    var y = window.pageYOffset;
+    nav.classList.toggle("stuck", y > 12);
+
+    var active = -1;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].getBoundingClientRect().top <= 140) active = i;
+    }
+    links.forEach(function (a, i) { a.classList.toggle("active", i === active); });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- mobile menu ---------- */
+  function closeSheet() {
+    sheet.classList.remove("on");
+    burger.classList.remove("open");
+    burger.setAttribute("aria-expanded", "false");
+    burger.setAttribute("aria-label", "Open menu");
+  }
+  burger.addEventListener("click", function () {
+    var open = sheet.classList.toggle("on");
+    burger.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+    burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  });
+  sheet.addEventListener("click", function (e) {
+    if (e.target.tagName === "A") closeSheet();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeSheet();
+  });
+
+  /* ---------- reveal: the rule draws, the block resolves ----------
+     Readability never waits on the observer. With no support for it, or on
+     a deep link that lands past a section, everything shows at once. */
+  var revealables = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  if (!("IntersectionObserver" in window) || location.hash) {
+    revealables.forEach(function (el) { el.classList.add("seen"); });
+  } else {
+    var revealObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("seen");
+        revealObs.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.08 });
+    revealables.forEach(function (el) { revealObs.observe(el); });
+  }
+
+  /* ---------- the numbers count up once, on load ---------- */
+  var metrics = document.getElementById("metrics");
+  if (metrics) {
+    var figures = Array.prototype.slice.call(metrics.querySelectorAll("[data-count]"));
+    figures.forEach(function (el, i) {
+      var to = parseInt(el.getAttribute("data-count"), 10);
+      if (reduced) { el.textContent = fmt(to); return; }
+      setTimeout(function () { tween(el, 0, to, 1000); }, 320 + i * 130);
+    });
+  }
+})();
+</script>
+</body>
+</html>
